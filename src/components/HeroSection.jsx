@@ -24,7 +24,7 @@ const HeroSection = () => {
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          src="https://framerusercontent.com/assets/peXdiIMmvI0yamPKFqGonj73Fo.mp4"
+          src="/hero.mp4"
           autoPlay
           loop
           muted
@@ -111,33 +111,7 @@ const HeroSection = () => {
       </div>
 
       {/* Floating WhatsApp Button */}
-      <div className="absolute bottom-12 right-12 z-20 flex flex-col items-center">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-          className="absolute inset-0 w-36 h-36 -m-10 pointer-events-none"
-        >
-          <svg viewBox="0 0 100 100" className="w-full h-full opacity-60">
-            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
-            <text className="fill-brand-cream text-[7px] font-label tracking-[0.15em] uppercase">
-              <textPath href="#circlePath">CALL US FOR BOOKING A TABLE QUICKLY • </textPath>
-            </text>
-          </svg>
-        </motion.div>
-
-        {/* FIX: rounded-none on CTA — sharp corners = posh */}
-        <a
-          href="https://wa.me/your-number"
-          target="_blank"
-          className="relative bg-brand-gold p-5 rounded-none hover:bg-light-gold transition-all duration-500 shadow-2xl group"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WA"
-            className="w-7 h-7 brightness-0 group-hover:brightness-100 transition-all"
-          />
-        </a>
-      </div>
+    
     </section>
   );
 };
