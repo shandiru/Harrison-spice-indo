@@ -36,7 +36,7 @@ const HeroSection = () => {
 
       {/* Social Media - Left Side */}
       <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col items-center gap-8">
-        <p className="text-brand-gold text-[10px] tracking-[0.4em] uppercase rotate-90 mb-14 font-label">
+        <p className="text-brand-gold text-[10px] tracking-[0.4em] uppercase rotate-90 mb-14 font-label whitespace-nowrap">
           Follow Us
         </p>
         <div className="w-[1px] h-24 bg-brand-gold/20 mb-4" />
@@ -48,7 +48,7 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="relative z-10 text-center px-4 max-w-6xl">
         
-        {/* New Eyebrow Content */}
+        {/* Eyebrow Content */}
         <motion.p
           {...fadeInUp}
           className="font-label text-brand-gold text-[10px] tracking-[0.32em] uppercase mb-6 flex items-center justify-center gap-3"
@@ -58,14 +58,13 @@ const HeroSection = () => {
           <span className="inline-block w-8 h-[1px] bg-brand-gold/70" />
         </motion.p>
 
-        {/* New Main Heading Content */}
+        {/* Main Heading Content */}
         <motion.h1
           variants={staggerContainer}
           initial="initial"
           animate="animate"
           className="font-display font-black text-4xl md:text-[80px] text-brand-cream leading-[1.1] mb-12 uppercase tracking-tight"
         >
-          {/* First Line */}
           <div className="block">
             {"Unlimited Plates.".split(" ").map((word, i) => (
               <span key={i} className="inline-block mr-4 whitespace-nowrap">
@@ -78,7 +77,6 @@ const HeroSection = () => {
             ))}
           </div>
           
-          {/* Second Line with Gold Accent */}
           <div className="block mt-2">
             {"Unforgettable".split(" ").map((word, i) => (
               <span key={i} className="inline-block mr-4 whitespace-nowrap">
@@ -99,56 +97,85 @@ const HeroSection = () => {
           </div>
         </motion.h1>
 
-        {/* Awards Section */}
+        {/* UPDATED AWARDS SECTION - Framer Style */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="flex flex-wrap justify-center items-center gap-10 md:gap-20 mt-12 opacity-80"
+          className="flex flex-row flex-wrap justify-center items-center gap-10 md:gap-16 mt-12"
         >
-          <div className="flex flex-col items-center">
-            <img src="https://www.tripadvisor.com/img/cdsi/img2/awards/v2/tc-badge-2023-15378-2.png" alt="Tripadvisor" className="h-14 grayscale brightness-200" />
-          </div>
+          {/* TripAdvisor */}
+          <a 
+            href="https://www.tripadvisor.com/TravelersChoice-Restaurants" 
+            target="_blank" 
+            rel="noopener" 
+            className="flex-shrink-0 grayscale brightness-200 hover:grayscale-0 hover:brightness-100 transition-all duration-500"
+          >
+             <img src="https://www.tripadvisor.com/img/cdsi/img2/awards/v2/tc-badge-2023-15378-2.png" alt="Tripadvisor" className="h-16 w-auto object-contain" />
+          </a>
 
-          <div className="flex flex-col items-center text-center">
-            <div className="text-brand-gold text-2xl mb-1">✽</div>
-            <p className="font-label text-brand-cream text-[10px] tracking-[0.2em] uppercase">Michelin Guide 2023</p>
-          </div>
+          {/* Michelin */}
+          <a 
+            href="https://guide.michelin.com" 
+            target="_blank" 
+            rel="noopener" 
+            className="flex flex-col items-center gap-2 group"
+          >
+            <div className="text-brand-gold text-2xl group-hover:scale-110 transition-transform duration-500">✽</div>
+            <p className="font-label text-brand-cream text-[10px] tracking-[0.2em] uppercase border-b border-transparent group-hover:border-brand-gold transition-all">
+              Michelin Guide 2023
+            </p>
+          </a>
 
-          <div className="flex items-center gap-4">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" alt="Google" className="h-6 grayscale opacity-80" />
-            <div className="text-left">
-              <p className="text-brand-cream font-label font-bold leading-none text-lg">4.8</p>
-              <div className="text-brand-gold text-[10px] tracking-widest mt-1">★★★★★</div>
+          {/* Google Review */}
+          <a 
+            href="https://www.google.com/maps" 
+            target="_blank" 
+            rel="noopener" 
+            className="flex items-center gap-4 group"
+          >
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" alt="Google" className="h-8 w-auto" />
+            <div className="flex flex-col items-start">
+              <div className="flex items-center gap-2">
+                <span className="text-brand-cream font-label font-bold text-xl leading-none">4.8</span>
+                <div className="text-brand-gold text-[12px] tracking-tighter">★★★★★</div>
+              </div>
+              <p className="text-brand-gold/60 text-[9px] uppercase tracking-[0.1em]">Google Reviews</p>
             </div>
-          </div>
+          </a>
         </motion.div>
-        
       </div>
-        <div className="absolute bottom-12 right-12 z-20 flex flex-col items-center rounde">
+
+      {/* Floating Booking Button */}
+      <div className="absolute bottom-12 right-12 z-20 flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-          className="absolute inset-0 w-36 h-36 -m-10 pointer-events-none"
+          className="absolute w-40 h-40 pointer-events-none flex items-center justify-center"
         >
-          <svg viewBox="0 0 100 100" className="w-full h-full opacity-60">
-            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
-            <text className="fill-brand-cream text-[7px] font-label tracking-[0.15em] uppercase">
-              <textPath href="#circlePath">CALL US FOR BOOKING A TABLE QUICKLY • </textPath>
+          <svg viewBox="0 0 100 100" className="w-full h-full opacity-90">
+            <path 
+              id="circlePath" 
+              d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" 
+              fill="transparent" 
+            />
+            <text className="fill-brand-gold text-[7.5px] font-label font-medium tracking-[0.2em] uppercase">
+              <textPath href="#circlePath">
+                RESERVE YOUR TABLE • CALL FOR BOOKING • 
+              </textPath>
             </text>
           </svg>
         </motion.div>
 
-        {/* FIX: rounded-none on CTA — sharp corners = posh */}
         <a
           href="https://wa.me/your-number"
           target="_blank"
-          className="relative bg-brand-gold p-5 rounded-none hover:bg-light-gold transition-all duration-500 shadow-2xl group"
+          className="relative z-10 bg-brand-gold p-4 rounded-full border border-white/10 hover:bg-light-gold transition-all duration-500 shadow-xl group flex items-center justify-center"
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
             alt="WA"
-            className="w-7 h-7 brightness-0 group-hover:brightness-100 transition-all"
+            className="w-6 h-6 transition-all duration-300" 
           />
         </a>
       </div>
