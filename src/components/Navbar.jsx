@@ -1,177 +1,119 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
-import { HashLink } from "react-router-hash-link";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // Mobile Menu State
-  const [scrolled, setScrolled] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false); // Desktop Dropdown State
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false); // Mobile Dropdown State
-  const dropdownRef = useRef(null);
-
-  // Scroll effect
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Close desktop dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [dropdownRef]);
-
-  // Handle mobile menu close and reset dropdowns
-  const handleMobileMenuClick = () => {
-    setIsOpen(false);
-    setMobileServicesOpen(false);
-    setShowDropdown(false);
-  };
-
-  const services = [
-    { name: "MOT", path: "/services/mot" },
-    { name: "Brakes", path: "/services/brake" },
-    { name: "Timing Belts", path: "/services/time-belts" },
-    { name: "Batteries", path: "/services/batteries" },
-    { name: "Suspension", path: "/services/suspension" },
-    { name: "Servicing", path: "/services/servicing" },
-    { name: "Clutches", path: "/services/clutches" },
-    { name: "Diagnostics", path: "/services/diagnostics" },
-    { name: "Aircon", path: "/services/aircon" },
-    { name: "Customisation", path: "/services/customisation" },
-  ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? "bg-black shadow-md" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center text-white">
-        {/* Logo */}
-        <div className="flex items-center">
-          <img
-            src="/logo-white.png"
-            alt="TT Automotive Logo"
-            className="h-14 w-auto object-contain"
-          />
-        </div>
-
-        {/* Desktop Menu */}
-        <nav className="hidden xl:flex items-center gap-8 font-semibold relative">
-          <HashLink to="/#" className="hover:text-[#861918] transition">Home</HashLink>
-          <HashLink to="/#about" className="hover:text-[#861918] transition">About Us</HashLink>
-
-          {/* Desktop Services Dropdown */}
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setShowDropdown(!showDropdown)}
-              className="flex items-center gap-1 hover:text-[#861918] transition focus:outline-none"
-            >
-              Services
-              <FiChevronDown
-                size={16}
-                className={`transition-transform duration-300 ${showDropdown ? "rotate-180" : ""}`}
-              />
-            </button>
-
-            {showDropdown && (
-              <div className="absolute left-0 top-full mt-2 bg-black border border-gray-700 rounded-md shadow-lg w-48 py-2 z-50">
-                {services.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-[#861918]/80 transition"
-                    onClick={() => setShowDropdown(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            )}
+    <>
+      {/* --- MAIN NAVBAR --- */}
+      <nav className="fixed top-0 left-0 w-full z-40 bg-black/20 backdrop-blur-sm border-b border-white/20">
+        <div className="max-w-full mx-auto flex items-center justify-between px-8 py-5">
+          
+          {/* LEFT - OPEN TIMES */}
+          <div className="hidden md:flex items-center gap-4 text-white">
+            <span className="bg-[#b58c67] px-3 py-1 text-[10px] font-bold tracking-widest rounded-sm">
+              OPEN TIMES
+            </span>
+            <span className="text-sm font-light tracking-wide">
+              Weekend: 9am–11pm
+            </span>
           </div>
 
-          <HashLink to="/#package" className="hover:text-[#861918] transition">Package</HashLink>
-          <HashLink to="/#testimonials" className="hover:text-[#861918] transition">Testimonials</HashLink>
-          <HashLink to="/review" className="hover:text-[#861918] transition">Review</HashLink>
-          <HashLink to="/#contact" className="hover:text-[#861918] transition">Contact Us</HashLink>
-        </nav>
+          {/* CENTER LOGO */}
+          <div className="flex flex-col items-center">
+            <div className="relative group cursor-pointer">
+              {/* Brush stroke background effect */}
+              <div className="absolute -inset-1 bg-[#b58c67] opacity-30 blur-sm rotate-3 rounded-full"></div>
+              <h1 className="relative text-white font-serif font-bold text-2xl tracking-[0.2em]">
+                NEW <br /> WAVE
+              </h1>
+            </div>
+          </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden xl:flex items-center">
-          <HashLink to="/#contact">
-            <button className="px-7 py-2.5 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-medium text-base rounded-lg border-2 border-white/15 shadow-[0_6px_25px_rgba(255,0,0,0.4)] transition-all duration-300">
-              Get In Touch
+          {/* RIGHT ACTIONS */}
+          <div className="flex items-center gap-10">
+            {/* RESERVATION */}
+            <button className="hidden md:flex items-center gap-3 text-white text-xs tracking-[0.15em] hover:opacity-70 transition">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              RESERVATION
             </button>
-          </HashLink>
+
+            {/* HAMBURGER */}
+            <button
+              onClick={() => setOpen(true)}
+              className="flex flex-col gap-[6px] group"
+            >
+              <span className="w-8 h-[1px] bg-white transition-all group-hover:w-6"></span>
+              <span className="w-8 h-[1px] bg-white"></span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* --- FULLSCREEN OVERLAY --- */}
+      <div 
+        className={`fixed inset-0 z-50 flex transition-transform duration-700 ease-in-out ${
+          open ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        {/* LEFT SIDE: BACKGROUND IMAGE & NAV LINKS */}
+        <div className="relative w-full md:w-[60%] h-full bg-neutral-900 overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" 
+            alt="Restaurant view"
+            className="absolute inset-0 w-full h-full object-cover opacity-60"
+          />
+          
+          {/* CLOSE BUTTON (On top of image) */}
+          <button
+            onClick={() => setOpen(false)}
+            className="absolute top-10 left-10 text-white text-3xl hover:rotate-90 transition-transform duration-300 z-10"
+          >
+            ✕
+          </button>
+
+          {/* NAV LINKS */}
+          <div className="relative h-full flex flex-col justify-center items-center text-white space-y-4 md:space-y-6">
+            {["Home", "The Menus", "About", "Gift Voucher", "News & Events", "Contact"].map((item) => (
+              <a 
+                key={item}
+                href={`#${item.toLowerCase()}`} 
+                className="font-serif text-4xl md:text-6xl hover:italic transition-all duration-300"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="xl:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
-            {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}
-          </button>
+        {/* RIGHT SIDE: CONTACT INFO */}
+        <div className="hidden md:flex w-[40%] bg-[#b58c67] flex-col justify-center items-center text-white px-12 text-center">
+          <div className="mb-12">
+             <h2 className="font-serif font-bold text-4xl tracking-widest mb-2 leading-tight">
+              NEW <br /> WAVE
+            </h2>
+          </div>
+
+          <div className="space-y-4 font-light tracking-wide text-sm opacity-90">
+            <p>44 Blue Spring Ave. Petersburg, VA 23803</p>
+            <p>+212 (0)6 61 95 62 46</p>
+            <p className="underline underline-offset-4 font-normal">reception@newwave.com</p>
+          </div>
+
+          {/* SOCIAL ICONS (Mockup style) */}
+          <div className="mt-16 flex items-center gap-6">
+             <div className="w-[1px] h-10 bg-white/30"></div>
+             <div className="flex gap-8 text-sm tracking-widest uppercase">
+                <span className="cursor-pointer hover:opacity-50">IG</span>
+                <span className="cursor-pointer hover:opacity-50">FB</span>
+                <span className="cursor-pointer hover:opacity-50">X</span>
+             </div>
+             <div className="w-[1px] h-10 bg-white/30"></div>
+          </div>
         </div>
       </div>
-
-      {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div
-          className={`xl:hidden absolute top-full left-0 w-full px-6 py-6 space-y-4 backdrop-blur-lg bg-black/95 text-white transition-all duration-300 border-t border-gray-800 max-h-[90vh] overflow-y-auto`}
-        >
-          <HashLink to="/#" className="block text-lg font-medium" onClick={handleMobileMenuClick}>Home</HashLink>
-          <HashLink to="/#about" className="block text-lg font-medium" onClick={handleMobileMenuClick}>About Us</HashLink>
-
-          {/* Mobile Services Accordion */}
-          <div className="space-y-2">
-            <button
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="flex justify-between w-full items-center text-lg font-medium"
-            >
-              Services
-              <FiChevronDown
-                size={20}
-                className={`transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            
-            {mobileServicesOpen && (
-              <div className="pl-4 space-y-3 mt-2 border-l-2 border-[#861918]">
-                {services.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    className="block text-gray-400 hover:text-white text-base"
-                    onClick={handleMobileMenuClick}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <HashLink to="/#package" className="block text-lg font-medium" onClick={handleMobileMenuClick}>Package</HashLink>
-          <HashLink to="/#testimonials" className="block text-lg font-medium" onClick={handleMobileMenuClick}>Testimonials</HashLink>
-          <HashLink to="/review" className="block text-lg font-medium" onClick={handleMobileMenuClick}>Review</HashLink>
-          <HashLink to="/#contact" className="block text-lg font-medium" onClick={handleMobileMenuClick}>Contact Us</HashLink>
-
-          <div className="pt-4">
-            <HashLink to="/#contact" onClick={handleMobileMenuClick}>
-              <button className="w-full px-7 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white font-bold rounded-lg">
-                Get a Quote
-              </button>
-            </HashLink>
-          </div>
-        </div>
-      )}
-    </header>
+    </>
   );
 }
