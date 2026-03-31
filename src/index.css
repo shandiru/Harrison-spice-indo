@@ -1,29 +1,60 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand Colors [cite: 8-34, 131-138] */
+  --color-brand-black: #090909;
+  --color-rich-black: #111111;
+  --color-soft-black: #1A1A1A;
+  --color-brand-gold: #C99728;
+  --color-light-gold: #F0C060;
+  --color-dim-gold: #7A5A1A;
+  --color-brand-cream: #F5EDD8;
+  --color-muted-gold: #8A7A5A;
 
-@keyframes slide {
-  0% {
-    transform: translateX(-50%);
+  /* Brand Typography [cite: 37-48, 139-141] */
+  --font-display: "Cinzel Decorative", Georgia, serif;
+  --font-label: "Cinzel", Georgia, serif;
+  --font-body: "Cormorant Garamond", Georgia, serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-black text-brand-cream font-body; /* [cite: 11, 31, 70] */
   }
-  100% {
-    transform: translateX(0%);
+
+  /* Hero & Section Headings [cite: 52-55] */
+  h1, .hero-text {
+    @apply font-display font-black text-brand-gold italic; 
+    font-size: clamp(64px, 10vw, 96px);
+    line-height: 1.05;
+  }
+
+  h2 {
+    @apply font-display font-bold text-brand-cream;
+    font-size: clamp(28px, 5vw, 36px);
+  }
+
+  /* Navigation & Buttons [cite: 63-64, 82, 94] */
+  nav a, .btn-primary {
+    @apply font-label font-semibold uppercase tracking-widest text-brand-gold;
+    font-size: 12px;
+    border-radius: 0px; /* Sharp corners = posh [cite: 82] */
+  }
+
+  /* Body text with generous line height [cite: 70] */
+  p {
+    @apply leading-relaxed;
+    font-size: 18px;
   }
 }
 
-.animate-slide {
-  animation: slide 12s linear infinite;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
+@layer components {
+  .card {
+    @apply bg-soft-black border border-brand-gold/20 p-6 rounded-lg; /* [cite: 17, 80, 89] */
+    transition: all 0.3s ease;
   }
-  100% {
-    transform: translateX(-50%);
-  }
-}
 
-.animate-scroll {
-  display: flex;
-  animation: scroll 25s linear infinite;
+  .card:hover {
+    @apply border-brand-gold; /* [cite: 83] */
+  }
 }

@@ -1,26 +1,31 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 const menuData = [
-  { id: "appetizers", title: "Appetizers", items: [ /* your item data */ ] },
-  { id: "salads", title: "Salads", items: [ /* your item data */ ] },
-  { id: "pizza", title: "Pizza", items: [ /* your item data */ ] },
-  { id: "main-dishes", title: "Main Dishes", items: [ /* your item data */ ] },
-  { id: "desserts", title: "Desserts", items: [ /* your item data */ ] },
-  { id: "drinks", title: "Drinks", items: [ /* your item data */ ] },
+  { id: "appetizers", title: "Appetizers", items: [ /* items */ ] },
+  { id: "salads", title: "Salads", items: [ /* items */ ] },
+  { id: "pizza", title: "Pizza", items: [ /* items */ ] },
+  { id: "main-dishes", title: "Main Dishes", items: [ /* items */ ] },
+  { id: "desserts", title: "Desserts", items: [ /* items */ ] },
+  { id: "drinks", title: "Drinks", items: [ /* items */ ] },
 ];
 
 const MenuCard = ({ item }) => (
-  <div className="group">
-    <div className="overflow-hidden rounded-[6px] bg-neutral-900">
+  <div className="group border-b border-brand-gold/10 pb-6">
+    <div className="overflow-hidden rounded-none bg-rich-black border border-brand-gold/5">
       <img
         src={item.image}
         alt={item.name}
-        className="h-[220px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[260px] lg:h-[290px]"
+        className="h-[220px] w-full object-cover transition duration-700 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0 sm:h-[260px] lg:h-[290px]"
       />
     </div>
-    <div className="pt-3">
-      <h3 className="text-[20px] font-medium leading-tight text-[#f2f0e9]">{item.name}</h3>
-      <p className="mt-2 text-[18px] text-zinc-400">{item.price}</p>
+    <div className="pt-5">
+      {/* Brand Body Font for Item Names */}
+      <h3 className="font-body italic text-[22px] md:text-[26px] leading-tight text-brand-cream group-hover:text-brand-gold transition-colors">
+        {item.name}
+      </h3>
+      <p className="mt-2 font-label text-[14px] tracking-widest text-brand-gold uppercase">
+        {item.price}
+      </p>
     </div>
   </div>
 );
@@ -31,8 +36,6 @@ const MenuSection = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      // rootMargin adjusts when the "active" switch happens. 
-      // -20% from top means it triggers when the section is near the top of the viewport.
       rootMargin: "-20% 0px -70% 0px",
       threshold: 0,
     };
@@ -47,7 +50,6 @@ const MenuSection = () => {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    // Observe all category sections
     menuData.forEach((category) => {
       const element = document.getElementById(category.id);
       if (element) observer.observe(element);
@@ -57,26 +59,39 @@ const MenuSection = () => {
   }, []);
 
   return (
-    <section className="bg-black px-4 py-10 text-white sm:px-6 lg:px-10 lg:py-14">
+    <section className="bg-brand-black px-4 py-16 text-brand-cream sm:px-6 lg:px-10 lg:py-24">
       <div className="mx-auto max-w-[1600px]">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-14">
+        
+        {/* Section Eyebrow */}
+        <div className="mb-16 border-l-2 border-brand-gold pl-6">
+          <span className="font-label text-[11px] tracking-[0.3em] text-brand-gold uppercase block mb-2">
+            The Selection
+          </span>
+          <h2 className="font-display text-4xl md:text-6xl text-brand-cream">
+            Our <span className="text-brand-gold">Menu</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-20">
           
-          {/* STICKY SIDEBAR */}
-          <aside className="lg:sticky lg:top-20 lg:h-fit">
-            <nav className="flex flex-col gap-6">
+          {/* STICKY SIDEBAR NAVIGATION */}
+          <aside className="lg:sticky lg:top-24 lg:h-fit border-r border-brand-gold/10 pr-8 hidden lg:block">
+            <nav className="flex flex-col gap-8">
               {menuData.map((category) => {
                 const isActive = activeSection === category.id;
                 return (
                   <a
                     key={category.id}
                     href={`#${category.id}`}
-                    className={`flex items-center gap-3 text-[22px] leading-none transition-all duration-300 hover:opacity-100 ${
-                      isActive ? "text-[#f2f0e9] opacity-100 font-medium" : "text-zinc-500 opacity-60 font-normal"
+                    className={`flex items-center gap-4 transition-all duration-500 group ${
+                      isActive ? "opacity-100" : "opacity-40 hover:opacity-100"
                     }`}
                   >
-                    {/* The dash appears only when active */}
-                    <span className={`block h-[2px] bg-[#f2f0e9] transition-all duration-300 ${isActive ? "w-8" : "w-0"}`} />
-                    <span>{category.title}</span>
+                    {/* Decorative gold dash for active state */}
+                    <div className={`h-[1px] bg-brand-gold transition-all duration-500 ${isActive ? "w-10" : "w-0 group-hover:w-4"}`} />
+                    <span className={`font-label text-[14px] tracking-[0.25em] uppercase ${isActive ? "text-brand-gold" : "text-brand-cream"}`}>
+                      {category.title}
+                    </span>
                   </a>
                 );
               })}
@@ -84,18 +99,19 @@ const MenuSection = () => {
           </aside>
 
           {/* SCROLLABLE CONTENT */}
-          <div className="space-y-24">
+          <div className="space-y-32">
             {menuData.map((section) => (
               <div 
                 key={section.id} 
                 id={section.id} 
-                className="scroll-mt-24" // Ensures header doesn't hide under top bar
+                className="scroll-mt-28"
               >
-                <h2 className="mb-10 text-[42px] leading-none text-[#f2f0e9] sm:text-[52px] lg:text-[60px]">
+                {/* Category Heading */}
+                <h2 className="mb-12 font-display text-[32px] md:text-[48px] leading-none text-brand-cream border-b border-dim-gold pb-6">
                   {section.title}
                 </h2>
 
-                <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
+                <div className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 xl:grid-cols-3">
                   {section.items.map((item, idx) => (
                     <MenuCard key={`${section.id}-${idx}`} item={item} />
                   ))}
