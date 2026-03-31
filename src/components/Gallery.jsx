@@ -34,7 +34,7 @@ export default function GallerySection() {
             aria-label="Previous Slide"
           >
             <img 
-              src="https://framerusercontent.com/images/NqmZDwgXe6mmBy82yLJxmRWY5K8.svg" 
+              src="/left-arrow.svg" 
               alt="Left Arrow" 
               className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] object-contain"
             />
@@ -66,7 +66,7 @@ export default function GallerySection() {
             aria-label="Next Slide"
           >
             <img 
-              src="https://framerusercontent.com/images/BrY2ssd9rJ0HVqWzbGfDrjKskxw.svg" 
+              src="/right-arrow.svg" 
               alt="Right Arrow" 
               className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] object-contain"
             />
