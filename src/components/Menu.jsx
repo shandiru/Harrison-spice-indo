@@ -1,12 +1,96 @@
 import React, { useState, useEffect } from "react";
 
 const menuData = [
-  { id: "appetizers", title: "Appetizers", items: [ /* items */ ] },
-  { id: "salads", title: "Salads", items: [ /* items */ ] },
-  { id: "pizza", title: "Pizza", items: [ /* items */ ] },
-  { id: "main-dishes", title: "Main Dishes", items: [ /* items */ ] },
-  { id: "desserts", title: "Desserts", items: [ /* items */ ] },
-  { id: "drinks", title: "Drinks", items: [ /* items */ ] },
+  {
+    id: "appetizers",
+    title: "Signature Appetizers",
+    items: [
+      {
+        name: "Truffle Arancini",
+        price: "$18.00",
+        image: "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=800",
+      },
+      {
+        name: "Ahi Tuna Tartare",
+        price: "$24.00",
+        image: "https://images.unsplash.com/photo-1546039907-7fa05f864c02?auto=format&fit=crop&q=80&w=800",
+      },
+      {
+        name: "Burrata & Heirloom",
+        price: "$21.00",
+        image: "https://images.unsplash.com/photo-1600335895229-6e75511892c8?auto=format&fit=crop&q=80&w=800",
+      },
+    ],
+  },
+  {
+    id: "pizza",
+    title: "Artisan Pizza",
+    items: [
+      {
+        name: "Black Truffle Pizza",
+        price: "$32.00",
+        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800",
+      },
+      {
+        name: "Diavola Infernal",
+        price: "$28.00",
+        image: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&q=80&w=800",
+      },
+    ],
+  },
+  {
+    id: "main-dishes",
+    title: "Main Dishes",
+    items: [
+      {
+        name: "Wagyu Ribeye",
+        price: "$85.00",
+        image: "https://images.unsplash.com/photo-1546241072-48010ad28c2c?auto=format&fit=crop&q=80&w=800",
+      },
+      {
+        name: "Pan-Seared Scallops",
+        price: "$42.00",
+        image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80&w=800",
+      },
+      {
+        name: "Osso Buco",
+        price: "$54.00",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=800",
+      },
+    ],
+  },
+  {
+    id: "desserts",
+    title: "Decadent Desserts",
+    items: [
+      {
+        name: "Gold Leaf Fondant",
+        price: "$16.00",
+        image: "https://images.unsplash.com/photo-1624353339193-2f03939a15d8?auto=format&fit=crop&q=80&w=800",
+      },
+      {
+        name: "Pistachio Baklava",
+        price: "$14.00",
+        image: "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&q=80&w=800",
+      },
+    ],
+  },
+  {
+    id: "drinks",
+    title: "Crafted Drinks",
+    items: [
+      {
+        name: "Smoked Old Fashioned",
+        price: "$19.00",
+        image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80&w=800",
+      },
+      {
+        name: "Midnight Espresso",
+        price: "$18.00",
+        image: "https://images.unsplash.com/photo-1541301606028-31416356390b?auto=format&fit=crop&q=80&w=800",
+      },
+    ],
+  },
 ];
 
 // FIX: Item names use font-display (Cinzel Decorative) as sub-headings per style guide
