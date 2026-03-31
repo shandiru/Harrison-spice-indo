@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors [cite: 8-34, 131-138] */
+  /* Brand Colors */
   --color-brand-black: #090909;
   --color-rich-black: #111111;
   --color-soft-black: #1A1A1A;
-  --color-brand-gold: #C99728;
+  --color-brand-gold: #C9972B;
   --color-light-gold: #F0C060;
   --color-dim-gold: #7A5A1A;
   --color-brand-cream: #F5EDD8;
   --color-muted-gold: #8A7A5A;
 
-  /* Brand Typography [cite: 37-48, 139-141] */
+  /* Brand Typography */
   --font-display: "Cinzel Decorative", Georgia, serif;
   --font-label: "Cinzel", Georgia, serif;
   --font-body: "Cormorant Garamond", Georgia, serif;
@@ -19,42 +19,77 @@
 
 @layer base {
   body {
-    @apply bg-brand-black text-brand-cream font-body; /* [cite: 11, 31, 70] */
+    @apply bg-brand-black text-brand-cream font-body;
   }
 
-  /* Hero & Section Headings [cite: 52-55] */
+  /* Hero & Logotype — font-display weight 900, gold gradient, no forced italic */
   h1, .hero-text {
-    @apply font-display font-black text-brand-gold italic; 
+    @apply font-display font-black text-brand-gold;
     font-size: clamp(64px, 10vw, 96px);
     line-height: 1.05;
   }
 
+  /* Section Headings — font-display weight 700, cream */
   h2 {
     @apply font-display font-bold text-brand-cream;
     font-size: clamp(28px, 5vw, 36px);
   }
 
-  /* Navigation & Buttons [cite: 63-64, 82, 94] */
+  /* Sub-Headings — font-display weight 400, cream (no gradient) */
+  h3 {
+    @apply font-display text-brand-cream;
+    font-size: clamp(18px, 2.5vw, 22px);
+  }
+
+  /* Navigation & Buttons */
   nav a, .btn-primary {
     @apply font-label font-semibold uppercase tracking-widest text-brand-gold;
     font-size: 12px;
-    border-radius: 0px; /* Sharp corners = posh [cite: 82] */
+    border-radius: 0px;
   }
 
-  /* Body text with generous line height [cite: 70] */
+  /* Body text */
   p {
-    @apply leading-relaxed;
+    @apply font-body leading-relaxed;
     font-size: 18px;
+    line-height: 1.85;
+  }
+
+  /* Captions / Notes */
+  .caption {
+    @apply font-body italic text-muted-gold;
+    font-size: 12px;
+    line-height: 1.55;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-soft-black border border-brand-gold/20 p-6 rounded-lg; /* [cite: 17, 80, 89] */
+    @apply bg-soft-black border border-brand-gold/20 p-6;
+    border-radius: 8px;
     transition: all 0.3s ease;
   }
 
   .card:hover {
-    @apply border-brand-gold; /* [cite: 83] */
+    @apply border-brand-gold;
+  }
+
+  /* Section eyebrow — always with leading rule */
+  .eyebrow {
+    @apply font-label text-brand-gold uppercase;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background-color: #C9972B;
+    flex-shrink: 0;
   }
 }

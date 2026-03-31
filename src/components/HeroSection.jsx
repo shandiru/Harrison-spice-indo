@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Instagram, Facebook } from 'lucide-react';
 
 const HeroSection = () => {
-  // Animation Variants
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -22,7 +21,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-brand-black flex items-center justify-center">
-      {/* Background Video/Image with Overlay */}
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
           src="https://framerusercontent.com/assets/peXdiIMmvI0yamPKFqGonj73Fo.mp4"
@@ -32,12 +31,12 @@ const HeroSection = () => {
           playsInline
           className="h-full w-full object-cover"
         />
-        {/* Subtle Dark Overlay as per Page 4 */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-[1px]" />
       </div>
 
       {/* Social Media - Left Side */}
       <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col items-center gap-8">
+        {/* FIX: eyebrow label — font-label, tracking, uppercase, gold */}
         <p className="text-brand-gold text-[10px] tracking-[0.4em] uppercase rotate-90 mb-14 font-label">
           Follow Us
         </p>
@@ -49,20 +48,24 @@ const HeroSection = () => {
 
       {/* Main Content */}
       <div className="relative z-10 text-center px-4 max-w-6xl">
-        <motion.h5 
-          {...fadeInUp}
-          className="font-body italic text-brand-gold text-lg md:text-2xl mb-6 tracking-wide"
-        >
-          Cuisine you'll crave, in an ambiance you'll admire
-        </motion.h5>
 
-        <motion.h1 
+        {/* FIX: Section eyebrow with leading rule — using <p> not <h5>, eyebrow class */}
+        <motion.p
+          {...fadeInUp}
+          className="font-label text-brand-gold text-[10px] tracking-[0.32em] uppercase mb-6 flex items-center justify-center gap-3"
+        >
+          <span className="inline-block w-8 h-[1px] bg-brand-gold/70" />
+          Cuisine you'll crave, in an ambiance you'll admire
+          <span className="inline-block w-8 h-[1px] bg-brand-gold/70" />
+        </motion.p>
+
+        <motion.h1
           variants={staggerContainer}
           initial="initial"
           animate="animate"
           className="font-display font-black text-4xl md:text-[90px] text-brand-cream leading-[1.1] mb-12 uppercase tracking-tight"
         >
-          {/* One word in gold as per brand identity (Page 4) */}
+          {/* One word in gold — style guide: feature one word in gold */}
           {"Good Times, Great".split(" ").map((word, i) => (
             <span key={i} className="inline-block mr-4 whitespace-nowrap">
               {word.split("").map((char, j) => (
@@ -82,7 +85,7 @@ const HeroSection = () => {
         </motion.h1>
 
         {/* Awards Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
@@ -91,25 +94,25 @@ const HeroSection = () => {
           <div className="flex flex-col items-center">
             <img src="https://www.tripadvisor.com/img/cdsi/img2/awards/v2/tc-badge-2023-15378-2.png" alt="Tripadvisor" className="h-14 grayscale brightness-200" />
           </div>
-          
+
           <div className="flex flex-col items-center text-center">
-             <div className="text-brand-gold text-2xl mb-1">✽</div>
-             <p className="font-label text-brand-cream text-[10px] tracking-[0.2em] uppercase">Michelin Guide 2023</p>
+            <div className="text-brand-gold text-2xl mb-1">✽</div>
+            <p className="font-label text-brand-cream text-[10px] tracking-[0.2em] uppercase">Michelin Guide 2023</p>
           </div>
 
           <div className="flex items-center gap-4">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" alt="Google" className="h-6 grayscale opacity-80" />
-             <div className="text-left">
-                <p className="text-brand-cream font-label font-bold leading-none text-lg">4.8</p>
-                <div className="text-brand-gold text-[10px] tracking-widest mt-1">★★★★★</div>
-             </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" alt="Google" className="h-6 grayscale opacity-80" />
+            <div className="text-left">
+              <p className="text-brand-cream font-label font-bold leading-none text-lg">4.8</p>
+              <div className="text-brand-gold text-[10px] tracking-widest mt-1">★★★★★</div>
+            </div>
           </div>
         </motion.div>
       </div>
 
       {/* Floating WhatsApp Button */}
       <div className="absolute bottom-12 right-12 z-20 flex flex-col items-center">
-        <motion.div 
+        <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
           className="absolute inset-0 w-36 h-36 -m-10 pointer-events-none"
@@ -121,16 +124,17 @@ const HeroSection = () => {
             </text>
           </svg>
         </motion.div>
-        
-        <a 
-          href="https://wa.me/your-number" 
+
+        {/* FIX: rounded-none on CTA — sharp corners = posh */}
+        <a
+          href="https://wa.me/your-number"
           target="_blank"
           className="relative bg-brand-gold p-5 rounded-none hover:bg-light-gold transition-all duration-500 shadow-2xl group"
         >
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-            alt="WA" 
-            className="w-7 h-7 brightness-0 group-hover:brightness-100 transition-all" 
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WA"
+            className="w-7 h-7 brightness-0 group-hover:brightness-100 transition-all"
           />
         </a>
       </div>

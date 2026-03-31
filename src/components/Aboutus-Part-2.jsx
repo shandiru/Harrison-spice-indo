@@ -60,10 +60,10 @@ export default function AboutUsPart2() {
             <div className="relative z-20 h-full flex flex-col">
               {/* Value & Suffix */}
               <div className="flex items-baseline">
-                <h2 className="text-8xl font-display font-black text-brand-gold transition-colors duration-500 tracking-tighter">
+                <h2 className="text-8xl font-label font-black text-brand-gold transition-colors duration-500 tracking-tighter">
                   {item.value}
                 </h2>
-                <span className="text-3xl font-display text-brand-gold ml-1 italic">
+                <span className="text-3xl font-label text-brand-gold ml-1 italic">
                   {item.suffix}
                 </span>
               </div>
