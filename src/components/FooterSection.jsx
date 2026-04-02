@@ -38,8 +38,8 @@ const Footer = () => {
 
       {/* 3. Address & Copyright */}
       <div className="text-center mb-8">
-        <p className="font-body italic text-muted-gold tracking-wide leading-relaxed" style={{ fontSize: '12px', lineHeight: '1.55' }}>
-          © Harison Spice Coalville. Tel: 001 23 456 789. <br className="md:hidden" />
+        <p className="font-body italic text-muted-gold tracking-wide leading-relaxed" style={{ fontSize: '16px', lineHeight: '1.55' }}>
+          © Harison Spice Coalville. Tel:  0116 2395 644. <br className="md:hidden" />
           Where tradition meets a new world of flavour.
         </p>
         {/* Legal Links Added Here */}

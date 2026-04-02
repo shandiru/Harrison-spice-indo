@@ -149,11 +149,11 @@ const PrivacyPolicy = () => {
             <p className="font-body italic text-brand-cream/80">Coalville, Leicestershire</p>
             <p className="font-body italic text-brand-cream/80">
               Email:{' '}
-              <a href="mailto:info@harisonspice.com" className="text-brand-gold hover:text-light-gold transition-colors underline underline-offset-4">
-                info@harisonspice.com
+              <a href="mailto:reservations@harrisonsspice.co.uk" className="text-brand-gold hover:text-light-gold transition-colors underline underline-offset-4">
+                reservations@harrisonsspice.co.uk
               </a>
             </p>
-            <p className="font-body italic text-brand-cream/80">Phone: +44 (0) 123 456 789</p>
+            <p className="font-body italic text-brand-cream/80">Phone: 0116 2395 644</p>
           </div>
           <p className="font-body text-brand-cream/60 text-sm italic leading-relaxed mt-6">
             If you are not satisfied with our response, you have the right to lodge a complaint with the{' '}
