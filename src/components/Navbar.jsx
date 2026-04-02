@@ -17,7 +17,7 @@ export default function Navbar() {
     <>
       {/* --- MAIN NAVBAR --- */}
       <nav className="fixed top-0 left-0 w-full z-40 bg-brand-black/80 backdrop-blur-md border-b border-brand-gold/10">
-        <div className="max-w-full mx-auto flex items-center justify-between px-5 md:px-8 py-4 md:py-5">
+        <div className="max-w-full mx-auto flex items-center justify-between px-5 md:px-8 py-4 md:py-10">
           
           {/* LEFT - OPEN TIMES (Mobile-il hide panni irukken for space) */}
           <div className="hidden lg:flex items-center gap-6 text-brand-cream">
