@@ -2,7 +2,7 @@ import React from 'react';
 
 const reviews = [
   { id: 1, quote: "I loved the harmony between textures and flavours in every dish. This place proves that luxury dining can still feel warm and welcoming.", name: "Lucas Meyer", img: "https://framerusercontent.com/images/ecAXGnfdTjghEuukyP1huZpZBI.jpg" },
-  { id: 2, quote: "Harison Spice offers an elegant atmosphere with flawless service and beautifully presented dishes. Every bite feels like a celebration.", name: "James Carter", img: "https://framerusercontent.com/images/dYNXvq6VlPEWBHHbmS2xzzbKP0Y.jpg" },
+  { id: 2, quote: "Harrison Spice offers an elegant atmosphere with flawless service and beautifully presented dishes. Every bite feels like a celebration.", name: "James Carter", img: "https://framerusercontent.com/images/dYNXvq6VlPEWBHHbmS2xzzbKP0Y.jpg" },
   { id: 3, quote: "The ambience is classy yet comfortable, and the weekly specials are full of surprising flavour combinations. A must-visit spot.", name: "Sophia Martinez", img: "https://framerusercontent.com/images/AqHxxQPZfnEcY6vLW7PDy4vnmds.jpg" },
   { id: 4, quote: "Everything was perfectly cooked, and the presentation elevated the entire experience. This restaurant truly understands luxury.", name: "Daniel Kim", img: "https://framerusercontent.com/images/j2i1P3titNU3ZhNU5N7IysaVH3k.jpg" },
 ];

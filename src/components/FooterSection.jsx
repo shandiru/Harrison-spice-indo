@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="flex-grow h-[1px] bg-gradient-to-l from-brand-gold/20 to-transparent" />
         <div className="px-8 md:px-12 text-center relative group">
           <h2 className="font-display leading-none">
-            <span className="block text-3xl md:text-5xl font-black text-brand-gold italic mb-1">Harison</span>
+            <span className="block text-3xl md:text-5xl font-black text-brand-gold italic mb-1">Harrison</span>
             <span className="block text-4xl md:text-6xl font-black text-brand-cream tracking-[0.2em]">SPICE</span>
           </h2>
           <div className="absolute inset-0 bg-brand-gold/5 blur-3xl rounded-full -z-10 group-hover:bg-brand-gold/10 transition-all duration-700" />
@@ -39,7 +39,7 @@ const Footer = () => {
       {/* 3. Address & Copyright */}
       <div className="text-center mb-8">
         <p className="font-body italic text-muted-gold tracking-wide leading-relaxed" style={{ fontSize: '16px', lineHeight: '1.55' }}>
-          © Harison Spice Coalville. Tel:  0116 2395 644. <br className="md:hidden" />
+          © Harrison Spice Coalville. Tel:  0116 2395 644. <br className="md:hidden" />
           Where tradition meets a new world of flavour.
         </p>
         {/* Legal Links Added Here */}

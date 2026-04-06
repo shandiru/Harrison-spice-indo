@@ -44,7 +44,7 @@ const TermsConditions = () => {
             <span className="w-6 h-[1px] bg-brand-gold inline-block" /> 3. Intellectual Property
           </h2>
           <p className="font-body text-brand-cream/70 text-base italic leading-relaxed">
-            All content on this website (including text, images, graphics, and logos) is owned by or licensed to Harison Spice. You may view, download, and print content for personal use only. You must not copy, reproduce, or distribute our website content without prior written consent.
+            All content on this website (including text, images, graphics, and logos) is owned by or licensed to Harrison Spice. You may view, download, and print content for personal use only. You must not copy, reproduce, or distribute our website content without prior written consent.
           </p>
         </section>
 
@@ -117,7 +117,7 @@ const TermsConditions = () => {
             If you have any questions about these Terms of Use, please contact us:
           </p>
           <div className="bg-soft-black border border-brand-gold/15 p-8 space-y-3">
-            <p className="font-label text-[11px] tracking-[0.3em] uppercase text-brand-gold">Harison Spice</p>
+            <p className="font-label text-[11px] tracking-[0.3em] uppercase text-brand-gold">Harrison Spice</p>
             <p className="font-body italic text-brand-cream/80">Coalville, Leicestershire</p>
             <p className="font-body italic text-brand-cream/80">
               Email:{' '}

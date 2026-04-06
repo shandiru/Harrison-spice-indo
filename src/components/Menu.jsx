@@ -159,7 +159,7 @@ const MenuSection = () => {
   };
 
   return (
-    <section className="bg-brand-black px-4 py-16 text-brand-cream sm:px-6 lg:px-10 lg:py-24">
+    <section className="bg-brand-black px-4 py-16 text-brand-cream sm:px-6 lg:px-10 lg:py-24" id="Menus">
       <div className="mx-auto max-w-[1600px]">
 
         {/* Section Eyebrow — leading rule + font-label + gold + uppercase */}

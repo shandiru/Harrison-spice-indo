@@ -145,7 +145,7 @@ const PrivacyPolicy = () => {
             If you have any questions about this Privacy Policy or how we handle your personal data, please contact us:
           </p>
           <div className="bg-soft-black border border-brand-gold/15 p-8 space-y-3">
-            <p className="font-label text-[11px] tracking-[0.3em] uppercase text-brand-gold">Harison Spice</p>
+            <p className="font-label text-[11px] tracking-[0.3em] uppercase text-brand-gold">Harrison Spice</p>
             <p className="font-body italic text-brand-cream/80">Coalville, Leicestershire</p>
             <p className="font-body italic text-brand-cream/80">
               Email:{' '}

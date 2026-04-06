@@ -23,7 +23,7 @@ const AboutUsSection = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center bg-brand-black px-4 py-24 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center bg-brand-black px-4 py-24 overflow-hidden" id="About">
       
       {/* Background Watermark */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none select-none">
@@ -79,7 +79,7 @@ const AboutUsSection = () => {
             <span className="text-brand-gold italic"> rich traditions of Chinese cooking</span>, reimagined each week 
             through the lens of a new country's cuisine. Located in the heart of 
             <span className="text-brand-cream font-bold"> Coalville, Leicestershire</span>, 
-            Harison Spice invites food lovers from across the East Midlands to sit back, explore, and discover 
+            Harrison Spice invites food lovers from across the East Midlands to sit back, explore, and discover 
             flavours that know no boundaries.
           </p>
         </motion.div>

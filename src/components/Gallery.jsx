@@ -21,7 +21,7 @@ export default function GallerySection() {
   };
 
   return (
-    <section className="bg-brand-black py-24 px-4 md:px-10 overflow-hidden min-h-[600px] flex items-center">
+    <section className="bg-brand-black py-24 px-4 md:px-10 overflow-hidden min-h-[600px] flex items-center" id="gallery">
       <div className="max-w-7xl mx-auto w-full">
         
         {/* Carousel Container */}
