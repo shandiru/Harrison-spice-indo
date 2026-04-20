@@ -25,8 +25,6 @@
   /* Hero & Logotype — font-display weight 900, gold gradient, no forced italic */
   h1, .hero-text {
     @apply font-display font-black text-brand-gold;
-    font-size: clamp(64px, 10vw, 96px);
-    line-height: 1.05;
   }
 
   /* Section Headings — font-display weight 700, cream */

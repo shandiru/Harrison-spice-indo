@@ -1,6 +1,6 @@
-import React from 'react';
 import { Instagram, Facebook } from 'lucide-react';
-import { Link } from 'react-router-dom'; // Ensure you use Link for internal routing
+import { Link } from 'react-router-dom';
+import { Fragment } from 'react';
 
 const Footer = () => {
   return (
@@ -22,7 +22,7 @@ const Footer = () => {
       {/* 2. Navigation Links */}
       <nav className="flex flex-wrap justify-center items-center gap-4 md:gap-8 mb-10">
         {['HOME', 'THE MENU', 'ABOUT US', 'GIFT VOUCHER', 'WEEKLY SPECIALS', 'CONTACT'].map((item, index, array) => (
-          <React.Fragment key={item}>
+          <Fragment key={item}>
             <a
               href="#"
               className="font-label text-[10px] md:text-[12px] tracking-[0.2em] text-brand-cream hover:text-brand-gold transition-all duration-300 font-semibold"
@@ -32,13 +32,13 @@ const Footer = () => {
             {index !== array.length - 1 && (
               <div className="w-[3px] h-[3px] bg-dim-gold rounded-full" />
             )}
-          </React.Fragment>
+          </Fragment>
         ))}
       </nav>
 
       {/* 3. Address & Copyright */}
       <div className="text-center mb-8">
-        <p className="font-body italic text-muted-gold tracking-wide leading-relaxed" style={{ fontSize: '16px', lineHeight: '1.55' }}>
+        <p className="font-body italic text-muted-gold tracking-wide leading-relaxed text-base md:text-lg">
           © Harrison Spice Coalville. Tel:  0116 2395 644. <br className="md:hidden" />
           Where tradition meets a new world of flavour.
         </p>

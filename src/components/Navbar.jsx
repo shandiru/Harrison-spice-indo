@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// Install lucide-react if you haven't: npm install lucide-react
-import { Instagram, Facebook, Twitter, X } from "lucide-react"; 
+import { Instagram, Facebook } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -82,9 +81,9 @@ export default function Navbar() {
 
               <div className="flex flex-col space-y-4 md:space-y-8 py-10">
                 {[ "Menus", "About", "Reviews", "Gallery"].map((item, idx) => (
-                  <motion.a 
+                  <motion.a
                     key={item}
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`#${item.toLowerCase()}`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * idx }}

@@ -6,6 +6,7 @@ import GDPRConsent from "./components/GDPRButton";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/FooterSection";
 import Home from "./page/Home";
+import NotFound from "./page/NotFound";
 function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/terms" element={<TermsConditions />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <GDPRConsent />

@@ -29,8 +29,7 @@ export default function ReviewSlider() {
               <li key={index} className="flex-shrink-0">
                 {/* FIX: border-radius 8px on cards per style guide (was missing) */}
                 <div
-                  className="w-[85vw] md:w-[460px] h-[320px] p-8 md:p-10 bg-soft-black border border-brand-gold/20 flex flex-col justify-between hover:border-brand-gold transition-colors duration-500"
-                  style={{ borderRadius: '8px' }}
+                  className="w-[85vw] md:w-[460px] h-[320px] p-8 md:p-10 bg-soft-black border border-brand-gold/20 flex flex-col justify-between hover:border-brand-gold transition-colors duration-500 rounded-lg"
                 >
                   <div>
                     <span className="text-brand-gold text-5xl font-display leading-none block mb-4 opacity-40">"</span>
@@ -45,8 +44,7 @@ export default function ReviewSlider() {
                     <img
                       src={review.img}
                       alt={review.name}
-                      className="w-12 h-12 object-cover grayscale border border-brand-gold/20"
-                      style={{ borderRadius: '0px' }}
+                      className="w-12 h-12 object-cover grayscale border border-brand-gold/20 rounded-none"
                     />
                     <div>
                       <p className="font-label text-[12px] font-bold tracking-widest text-brand-gold uppercase">
