@@ -64,6 +64,12 @@ export default function Navbar() {
             </button>
           </div>
         </div>
+
+        <div style={{ display: "none" }} aria-hidden="true">
+          <a href="/">Home</a>
+          <a href="/terms">Terms</a>
+          <a href="/privacy">Privacy</a>
+        </div>
       </nav>
 
       <AnimatePresence>
