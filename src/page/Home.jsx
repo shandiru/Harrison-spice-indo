@@ -49,7 +49,7 @@ const structuredData = {
       telephone: "+44 116 239 5644",
       email: "info@harrisonspice.com",
       servesCuisine: ["Indian", "Chinese", "Indo-Chinese Buffet"],
-      priceRange: "££",
+      priceRange: "\u00A3\u00A3",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Coalville",
