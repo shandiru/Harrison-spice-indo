@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors */
   --color-brand-black: #090909;
   --color-rich-black: #111111;
   --color-soft-black: #1A1A1A;
@@ -11,7 +10,6 @@
   --color-brand-cream: #F5EDD8;
   --color-muted-gold: #8A7A5A;
 
-  /* Brand Typography */
   --font-display: "Cinzel Decorative", Georgia, serif;
   --font-label: "Cinzel", Georgia, serif;
   --font-body: "Cormorant Garamond", Georgia, serif;
@@ -22,40 +20,36 @@
     @apply bg-brand-black text-brand-cream font-body;
   }
 
-  /* Hero & Logotype — font-display weight 900, gold gradient, no forced italic */
-  h1, .hero-text {
+  h1,
+  .hero-text {
     @apply font-display font-black text-brand-gold;
     font-size: clamp(64px, 10vw, 96px);
     line-height: 1.05;
   }
 
-  /* Section Headings — font-display weight 700, cream */
   h2 {
     @apply font-display font-bold text-brand-cream;
     font-size: clamp(28px, 5vw, 36px);
   }
 
-  /* Sub-Headings — font-display weight 400, cream (no gradient) */
   h3 {
     @apply font-display text-brand-cream;
     font-size: clamp(18px, 2.5vw, 22px);
   }
 
-  /* Navigation & Buttons */
-  nav a, .btn-primary {
+  nav a,
+  .btn-primary {
     @apply font-label font-semibold uppercase tracking-widest text-brand-gold;
     font-size: 12px;
     border-radius: 0px;
   }
 
-  /* Body text */
   p {
     @apply font-body leading-relaxed;
     font-size: 18px;
     line-height: 1.85;
   }
 
-  /* Captions / Notes */
   .caption {
     @apply font-body italic text-muted-gold;
     font-size: 12px;
@@ -74,7 +68,6 @@
     @apply border-brand-gold;
   }
 
-  /* Section eyebrow — always with leading rule */
   .eyebrow {
     @apply font-label text-brand-gold uppercase;
     font-size: 10px;
@@ -85,7 +78,7 @@
   }
 
   .eyebrow::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 32px;
     height: 1px;

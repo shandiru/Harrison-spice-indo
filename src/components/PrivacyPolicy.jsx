@@ -3,7 +3,6 @@ import React from 'react';
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-brand-black text-brand-cream">
-      {/* Hero Header */}
       <div className="pt-32 pb-16 px-6 md:px-16 border-b border-brand-gold/10 text-center">
         <span className="font-label text-[11px] tracking-[0.4em] text-brand-gold uppercase block mb-6">
           Legal
@@ -14,7 +13,6 @@ const PrivacyPolicy = () => {
         <p className="font-body italic text-muted-gold text-sm tracking-wide">Last updated: 09/09/2025</p>
       </div>
 
-      {/* Content */}
       <div className="max-w-4xl mx-auto px-6 md:px-10 py-16 space-y-12">
 
         <section>

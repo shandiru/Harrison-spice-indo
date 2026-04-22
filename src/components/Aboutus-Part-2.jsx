@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+
+const MotionDiv = motion.div;
 
 const achievements = [
   {
@@ -8,7 +9,7 @@ const achievements = [
     suffix: "",
     title: "Location",
     description: "One home. One kitchen. One incredible buffet experience right here in Coalville, Leicestershire.",
-    bgImage: "https://framerusercontent.com/images/yMCEg1kiSqgtXmhWGrThVWKtKLw.jpg"
+    bgImage: "https://framerusercontent.com/images/yMCEg1kiSqgtXmhWGrThVWKtKLw.jpg",
   },
   {
     id: 2,
@@ -16,7 +17,7 @@ const achievements = [
     suffix: "+",
     title: "Menus a Year",
     description: "A new country's cuisine inspiring our buffet every single week, no two visits ever the same.",
-    bgImage: "https://framerusercontent.com/images/DZUxgOwl5wPGJPCwjWqaQxbXmQ.jpg"
+    bgImage: "https://framerusercontent.com/images/DZUxgOwl5wPGJPCwjWqaQxbXmQ.jpg",
   },
   {
     id: 3,
@@ -24,68 +25,59 @@ const achievements = [
     suffix: " hrs",
     title: "Per Table",
     description: "Generous, unhurried dining, all the time you need to savour every dish on the spread.",
-    bgImage: "https://framerusercontent.com/images/l98uOpRtxmN52QoHItibSITsx0.jpg"
-  }
+    bgImage: "https://framerusercontent.com/images/l98uOpRtxmN52QoHItibSITsx0.jpg",
+  },
 ];
 
 export default function AboutUsPart2() {
   return (
-    <section className="bg-brand-black py-24 px-4 md:px-10 overflow-hidden">
-      <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 border-x border-brand-gold/10">
+    <section className="overflow-hidden bg-brand-black px-4 py-24 md:px-10">
+      <div className="mx-auto grid max-w-[1500px] grid-cols-1 gap-0 border-x border-brand-gold/10 md:grid-cols-3">
         {achievements.map((item, index) => (
-          <motion.div 
+          <MotionDiv
             key={item.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
-            className={`group relative overflow-hidden aspect-[3.5/5] flex flex-col justify-between p-12 cursor-pointer 
-              ${index !== 2 ? 'md:border-r border-brand-gold/10' : ''} border-b md:border-b-0 transition-all duration-500`}
+            className={`group relative flex aspect-[3.5/5] cursor-pointer flex-col justify-between overflow-hidden p-12 transition-all duration-500 ${
+              index !== 2 ? "border-b border-brand-gold/10 md:border-r md:border-b-0" : ""
+            }`}
           >
-            {/* Default Background (Rich Black) */}
-            <div className="absolute inset-0 bg-rich-black transition-all duration-700 z-0" />
+            <div className="absolute inset-0 z-0 bg-rich-black transition-all duration-700" />
 
-            {/* Hover Background Image (Grayscale to Color effect) */}
-            <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
-              <img 
-                src={item.bgImage} 
+            <div className="absolute inset-0 z-10 opacity-0 transition-opacity duration-1000 group-hover:opacity-100">
+              <img
+                src={item.bgImage}
                 alt={item.title}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-transform duration-[2000ms] group-hover:scale-110"
+                className="h-full w-full object-cover grayscale transition-transform duration-[2000ms] group-hover:scale-110 group-hover:grayscale-0"
               />
-              {/* Dark Overlay for text readability */}
               <div className="absolute inset-0 bg-black/70" />
             </div>
 
-            {/* Content Container */}
-            <div className="relative z-20 h-full flex flex-col">
-              {/* Value & Suffix */}
+            <div className="relative z-20 flex h-full flex-col">
               <div className="flex items-baseline">
-                <h2 className="text-8xl font-label font-black text-brand-gold transition-colors duration-500 tracking-tighter">
+                <h2 className="font-label text-8xl font-black tracking-tighter text-brand-gold transition-colors duration-500">
                   {item.value}
                 </h2>
-                <span className="text-3xl font-label text-brand-gold ml-1 italic">
-                  {item.suffix}
-                </span>
+                <span className="ml-1 font-label text-3xl italic text-brand-gold">{item.suffix}</span>
               </div>
 
-              {/* Title Section */}
               <div className="mt-8">
-                <h3 className="font-label text-xl tracking-[0.25em] text-brand-cream uppercase group-hover:text-brand-gold transition-colors duration-500">
+                <h3 className="font-label text-xl tracking-[0.25em] text-brand-cream uppercase transition-colors duration-500 group-hover:text-brand-gold">
                   {item.title}
                 </h3>
               </div>
 
-              {/* Description Section */}
               <div className="mt-auto">
-                <p className="font-body text-[17px] italic text-muted-gold group-hover:text-brand-cream transition-colors duration-500 leading-relaxed">
+                <p className="font-body text-[17px] leading-relaxed text-muted-gold italic transition-colors duration-500 group-hover:text-brand-cream">
                   {item.description}
                 </p>
               </div>
             </div>
-            
-            {/* Subtle bottom border accent on hover */}
-            <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-brand-gold group-hover:w-full transition-all duration-700 z-30" />
-          </motion.div>
+
+            <div className="absolute bottom-0 left-0 z-30 h-[2px] w-0 bg-brand-gold transition-all duration-700 group-hover:w-full" />
+          </MotionDiv>
         ))}
       </div>
     </section>

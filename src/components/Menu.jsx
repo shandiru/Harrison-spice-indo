@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const menuData = [
   {
@@ -7,17 +7,17 @@ const menuData = [
     items: [
       {
         name: "Truffle Arancini",
-        price: "£18.00",
+        price: "\u00A318.00",
         image: "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=800",
       },
       {
         name: "Ahi Tuna Tartare",
-        price: "£24.00",
+        price: "\u00A324.00",
         image: "https://images.unsplash.com/photo-1546039907-7fa05f864c02?auto=format&fit=crop&q=80&w=800",
       },
       {
         name: "Burrata & Heirloom",
-        price: "£21.00",
+        price: "\u00A321.00",
         image: "https://images.unsplash.com/photo-1600335895229-6e75511892c8?auto=format&fit=crop&q=80&w=800",
       },
     ],
@@ -28,12 +28,12 @@ const menuData = [
     items: [
       {
         name: "Black Truffle Pizza",
-        price: "£32.00",
+        price: "\u00A332.00",
         image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800",
       },
       {
         name: "Diavola Infernal",
-        price: "£28.00",
+        price: "\u00A328.00",
         image: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&q=80&w=800",
       },
     ],
@@ -44,17 +44,17 @@ const menuData = [
     items: [
       {
         name: "Wagyu Ribeye",
-        price: "£85.00",
+        price: "\u00A385.00",
         image: "https://images.unsplash.com/photo-1546241072-48010ad28c2c?auto=format&fit=crop&q=80&w=800",
       },
       {
         name: "Pan-Seared Scallops",
-        price: "£42.00",
+        price: "\u00A342.00",
         image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80&w=800",
       },
       {
         name: "Osso Buco",
-        price: "£54.00",
+        price: "\u00A354.00",
         image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=800",
       },
     ],
@@ -65,12 +65,12 @@ const menuData = [
     items: [
       {
         name: "Gold Leaf Fondant",
-        price: "£16.00",
+        price: "\u00A316.00",
         image: "https://images.unsplash.com/photo-1624353339193-2f03939a15d8?auto=format&fit=crop&q=80&w=800",
       },
       {
         name: "Pistachio Baklava",
-        price: "£14.00",
+        price: "\u00A314.00",
         image: "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&q=80&w=800",
       },
     ],
@@ -81,36 +81,32 @@ const menuData = [
     items: [
       {
         name: "Smoked Old Fashioned",
-        price: "£19.00",
+        price: "\u00A319.00",
         image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80&w=800",
       },
       {
         name: "Midnight Espresso",
-        price: "£18.00",
+        price: "\u00A318.00",
         image: "https://images.unsplash.com/photo-1541301606028-31416356390b?auto=format&fit=crop&q=80&w=800",
       },
     ],
   },
 ];
 
-// FIX: Item names use font-display (Cinzel Decorative) as sub-headings per style guide
 const MenuCard = ({ item }) => (
   <div className="group border-b border-brand-gold/10 pb-6">
-    <div className="overflow-hidden rounded-none bg-rich-black border border-brand-gold/5">
+    <div className="overflow-hidden rounded-none border border-brand-gold/5 bg-rich-black">
       <img
         src={item.image}
         alt={item.name}
-        className="h-[220px] w-full object-cover transition duration-700 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0 sm:h-[260px] lg:h-[290px]"
+        className="h-[220px] w-full object-cover grayscale-[30%] transition duration-700 group-hover:scale-110 group-hover:grayscale-0 sm:h-[260px] lg:h-[290px]"
       />
     </div>
     <div className="pt-5">
-      {/* FIX: font-display for item name (sub-heading level), 18-22px per spec */}
-      <h3 className="font-display text-[18px] md:text-[20px] leading-tight text-brand-cream group-hover:text-brand-gold transition-colors duration-300">
+      <h3 className="font-display text-[18px] leading-tight text-brand-cream transition-colors duration-300 group-hover:text-brand-gold md:text-[20px]">
         {item.name}
       </h3>
-      <p className="mt-2 font-label text-[11px] tracking-[0.2em] text-brand-gold uppercase">
-        {item.price}
-      </p>
+      <p className="mt-2 font-label text-[11px] tracking-[0.2em] text-brand-gold uppercase">{item.price}</p>
     </div>
   </div>
 );
@@ -119,37 +115,40 @@ const MenuSection = () => {
   const [activeSection, setActiveSection] = useState(menuData[0].id);
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -70% 0px",
-      threshold: 0,
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -70% 0px",
+        threshold: 0,
+      },
+    );
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
     menuData.forEach((category) => {
       const element = document.getElementById(category.id);
-      if (element) observer.observe(element);
+      if (element) {
+        observer.observe(element);
+      }
     });
 
     return () => observer.disconnect();
   }, []);
 
-  // Helper: split title, highlight last word in gold
   const renderHeadingWithGold = (title) => {
     const words = title.split(" ");
     if (words.length === 1) {
       return <span className="text-brand-gold">{title}</span>;
     }
+
     const last = words[words.length - 1];
     const rest = words.slice(0, -1).join(" ");
+
     return (
       <>
         {rest}{" "}
@@ -159,24 +158,17 @@ const MenuSection = () => {
   };
 
   return (
-    <section className="bg-brand-black px-4 py-16 text-brand-cream sm:px-6 lg:px-10 lg:py-24" id="Menus">
+    <section className="bg-brand-black px-4 py-16 text-brand-cream sm:px-6 lg:px-10 lg:py-24" id="menus">
       <div className="mx-auto max-w-[1600px]">
-
-        {/* Section Eyebrow — leading rule + font-label + gold + uppercase */}
         <div className="mb-16 border-l-2 border-brand-gold pl-6">
-          <span className="font-label text-[11px] tracking-[0.3em] text-brand-gold uppercase block mb-2">
-            The Selection
-          </span>
-          {/* FIX: One word in gold in section heading */}
-          <h2 className="font-display text-4xl md:text-6xl text-brand-cream">
+          <span className="mb-2 block font-label text-[11px] tracking-[0.3em] text-brand-gold uppercase">The Selection</span>
+          <h2 className="font-display text-4xl text-brand-cream md:text-6xl">
             Our <span className="text-brand-gold">Menu</span>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-20">
-
-          {/* STICKY SIDEBAR NAVIGATION */}
-          <aside className="lg:sticky lg:top-24 lg:h-fit border-r border-brand-gold/10 pr-8 hidden lg:block">
+          <aside className="hidden border-r border-brand-gold/10 pr-8 lg:sticky lg:top-24 lg:block lg:h-fit">
             <nav className="flex flex-col gap-8">
               {menuData.map((category) => {
                 const isActive = activeSection === category.id;
@@ -184,12 +176,16 @@ const MenuSection = () => {
                   <a
                     key={category.id}
                     href={`#${category.id}`}
-                    className={`flex items-center gap-4 transition-all duration-500 group ${
+                    className={`group flex items-center gap-4 transition-all duration-500 ${
                       isActive ? "opacity-100" : "opacity-40 hover:opacity-100"
                     }`}
                   >
                     <div className={`h-[1px] bg-brand-gold transition-all duration-500 ${isActive ? "w-10" : "w-0 group-hover:w-4"}`} />
-                    <span className={`font-label text-[14px] tracking-[0.25em] uppercase ${isActive ? "text-brand-gold" : "text-brand-cream"}`}>
+                    <span
+                      className={`font-label text-[14px] tracking-[0.25em] uppercase ${
+                        isActive ? "text-brand-gold" : "text-brand-cream"
+                      }`}
+                    >
                       {category.title}
                     </span>
                   </a>
@@ -198,13 +194,10 @@ const MenuSection = () => {
             </nav>
           </aside>
 
-          {/* SCROLLABLE CONTENT */}
           <div className="space-y-32">
             {menuData.map((section) => (
               <div key={section.id} id={section.id} className="scroll-mt-28">
-
-                {/* FIX: Category heading — one word in gold per style guide */}
-                <h2 className="mb-12 font-display text-[32px] md:text-[48px] leading-none  pb-6">
+                <h2 className="mb-12 pb-6 font-display text-[32px] leading-none md:text-[48px]">
                   {renderHeadingWithGold(section.title)}
                 </h2>
 
@@ -216,7 +209,6 @@ const MenuSection = () => {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
